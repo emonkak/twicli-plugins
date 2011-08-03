@@ -23,22 +23,20 @@ registerPlugin
     state = document.createElement 'span'
     state.id = 'notification_status'
     state.textContent = if notify.checkPermission() is 0 then 'on' else 'off'
-    request = document.createElement 'input'
-    request.type = 'submit'
-    request.value = 'Request'
-    form.appendChild document.createTextNode 'Notification state: '
-    form.appendChild state
-    form.appendChild document.createTextNode ' '
-    form.appendChild request
     timeout = document.createElement 'input'
     timeout.type = 'text'
     timeout.id = 'notification_timeout'
+    timeout.title = 'Timeout (msec)'
     timeout.size = 3
     timeout.value = readCookie('notification_timeout') or 5000
-    form.appendChild document.createElement 'br'
-    form.appendChild document.createTextNode 'Notification timeout: '
+    request = document.createElement 'input'
+    request.type = 'submit'
+    request.value = 'Request'
+    form.appendChild document.createTextNode 'Notification: '
+    form.appendChild state
+    form.appendChild document.createTextNode ' '
     form.appendChild timeout
-    form.appendChild document.createTextNode ' msec'
+    form.appendChild request
     hr = document.createElement 'hr'
     hr.className = 'spacer'
     ele.appendChild div
